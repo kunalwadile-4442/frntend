@@ -15,6 +15,7 @@ export function geoCodeAddress(address) {
   return result;
 }
 
+
 export const getGeoCode:any = async (address,access_token) => {
  return getData(`/${App_url.link.ENDPOINT_LINKS.GMAP_GEOCODE_URL}${address}`,access_token).then((resp)=>{
     return resp
