@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* Hide the spinner for Chrome, Safari, Edge, Opera */
+  input[type='number']::-webkit-inner-spin-button,
+  input[type='number']::-webkit-outer-spin-button {
+    appearance: none;
+    margin: 0;
+  }
+
+  /* Hide the spinner for Firefox */
+  input[type='number'] {
+    -moz-appearance: textfield;
+  }
+}
+body {
+  margin: 0;
+  font-family: 'Poppins', 'sans-serif', 'TwemojiMozilla-Regular';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family:'Poppins', source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+
+h1, h2, h3, h4, h5, h6, p, a, span, div,td,tr,tbody,thead {
+  font-family: 'Poppins', sans-serif, 'TwemojiMozilla-Regular';;
+}
+
+

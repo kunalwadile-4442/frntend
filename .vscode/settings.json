@@ -1,0 +1,12 @@
+{
+    "cSpell.words": [
+        "Aggreement",
+        "argb",
+        "Deactive",
+        "pincode",
+        "relavtive",
+        "setdefualt"
+    ],
+    "typescript.tsdk": "node_modules\\typescript\\lib",
+    "zencoder.enableRepoIndexing": false
+}
