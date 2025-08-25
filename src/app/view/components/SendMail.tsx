@@ -72,7 +72,7 @@ const SendMail: React.FC<ISendFormProps> = (prop) => {
       postData(
         prop.restURL.url,
         { ...data, id: prop?.restURL?.body,is_mail: is_mail },
-        user_data.access_token
+        user_data.accessToken
       ).then((resp) => {
         setLoader(false);
         dispatch(setFormPopup({status:'hide'}))

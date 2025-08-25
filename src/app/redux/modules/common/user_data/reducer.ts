@@ -8,7 +8,7 @@ const initialState: IUserRes = {
   status: "",
   is_Login: false,
   user: null,
-  access_token: "",
+  accessToken: "",
 };
 
 const userDataReducers = (

@@ -94,7 +94,7 @@ export const WebSocketProvider: React.FC<{ children: React.ReactNode }> = ({
       };
       send(joinPayload);
     }
-  }, [user_data?.access_token, isConnect]);
+  }, [user_data?.accessToken, isConnect]);
 
   function isAuthPath(): boolean {
     if (
@@ -107,10 +107,10 @@ export const WebSocketProvider: React.FC<{ children: React.ReactNode }> = ({
   }
 
   const getUserDetails = async () => {
-    if (user_data?.access_token) {
+    if (user_data?.accessToken) {
       const response = await getData(
         App_url.link.ENDPOINT_LINKS.GET_USER_DETAILS,
-        user_data?.access_token
+        user_data?.accessToken
       );
       if (response?.status === "success") {
         const permission = response?.data?.user;
@@ -159,7 +159,7 @@ export const WebSocketProvider: React.FC<{ children: React.ReactNode }> = ({
       dispatch(setRequestLoader(""));
       dispatch(setModalLoader(""));
       if (
-        user_data?.access_token &&
+        user_data?.accessToken &&
         location?.pathname !== App_url?.link?.SIGNIN_URL
       ) {
         dispatch(
@@ -225,7 +225,7 @@ export const WebSocketProvider: React.FC<{ children: React.ReactNode }> = ({
         }
       };
     }
-  }, [user_data?.is_Login, user_data?.access_token]);
+  }, [user_data?.is_Login, user_data?.accessToken]);
 
   const contextValue: WebSocketContextType = {
     socket: socket,

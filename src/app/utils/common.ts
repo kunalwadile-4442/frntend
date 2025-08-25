@@ -531,11 +531,11 @@ export const callDownloadPDF = async (setLoader, data, user_data, dispatch) => {
   const file_json = JSON.parse(data?.file_json);
   setLoader(data?.id);
 
-  // downloadInvoice(data, false, user_data.access_token, dispatch, setLoader, `INVOICE_${data?.invoice_number}_from_KAS_METALS.pdf`)
+  // downloadInvoice(data, false, user_data.accessToken, dispatch, setLoader, `INVOICE_${data?.invoice_number}_from_KAS_METALS.pdf`)
   if (file_json?.original_name?.includes(".pdf")) {
     await getData(
       `${App_url.link.ENDPOINT_LINKS.DOC_DOWNLOAD}/${file_json?.name}`,
-      user_data?.access_token,
+      user_data?.accessToken,
       dispatch,
       false,
       `${data?.transfer_document_number}.pdf`
@@ -544,7 +544,7 @@ export const callDownloadPDF = async (setLoader, data, user_data, dispatch) => {
     await downloadFile1(
       `${App_url.link.ENDPOINT_LINKS.DOC_DOWNLOAD}/${file_json?.name}`,
       `${data?.transfer_document_number}`,
-      user_data?.access_token
+      user_data?.accessToken
     );
   }
   setTimeout(() => setLoader(""), 500);

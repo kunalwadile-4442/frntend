@@ -11,6 +11,7 @@ import ConfirmModalPopup from "./app/view/components/layout/popup/ConfirmModalPo
 import PageValidator from "./app/view/components/PageValidator";
 import ForgetPassword from "./app/view/pages/Auth/forgetPassword";
 import Resetpassword from "./app/view/pages/Auth/resetPassword";
+import confirmPassword from "./app/view/pages/Auth/confirmpassword/index";
 import SignIn from "./app/view/pages/Auth/signIn";
 import Dashboard from "./app/view/pages/dashboard";
 import CollegeMaster from "./app/view/pages/college_management/master";
@@ -50,6 +51,7 @@ import AddSubCategoryForm from "./app/view/pages/master_management/subcategory/f
 import AddDistrictForm from "./app/view/pages/master_management/district/form";
 import CollegeType from "./app/view/pages/master_management/collegetype";
 import AddCollegeTypeForm from "./app/view/pages/master_management/collegetype/form";
+import ConfirmPassword from "./app/view/pages/Auth/confirmpassword/index";
 
 
 
@@ -66,6 +68,7 @@ function App() {
         <Route path={App_url.link.FORGET_PASSWORD_URL} element={<ForgetPassword />} />
         <Route path={"*"} element={<Navigate replace to={App_url.link.SIGNIN_URL} />} />
         <Route path={App_url.link.RESET_PASSWORD_URL} element={<Resetpassword />} />
+        <Route path={App_url.link.CONFIRM_PASSWORD_URL} element={< ConfirmPassword/>} />
       </React.Fragment>
     )
   }

@@ -61,7 +61,7 @@ export default function PageLoad() {
     
     navigate(App_url.link.SIGNIN_URL);
     const socketSingleton = SocketSingleton.getInstance(user_data);
-    getData(App_url.link.ENDPOINT_LINKS.LOG_OUT, user_data?.access_token).then((res) => {
+    getData(App_url.link.ENDPOINT_LINKS.LOG_OUT, user_data?.accessToken).then((res) => {
 
       if (res?.data?.status === "success") {
         toast.success("User logged out successfully");

@@ -73,7 +73,7 @@ const ImageUpload: React.FC<FileUploadProps> = (props) => {
                 const response = await postData(
                     App_url.link.ENDPOINT_LINKS.UPLOAD_FILE,
                     formData,
-                    user_data.access_token,
+                    user_data.accessToken,
                     "multipart/form-data"
                 );
                 console.log("Image uploaded::", response);

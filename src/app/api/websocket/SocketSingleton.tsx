@@ -7,7 +7,7 @@
     private constructor(user_data) {
 
         this.socket =io(`${import.meta.env.VITE_APP_ENDPOINT_URL}`, {
-            auth: { token: user_data?.access_token },
+            auth: { token: user_data?.accessToken },
             autoConnect: false,
             reconnection: false,
             reconnectionAttempts: 0,

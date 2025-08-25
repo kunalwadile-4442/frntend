@@ -82,7 +82,7 @@ const DocumentUpload = (props: IDocumentUpload) => {
                         if (isDownload)
                             setLoader(index);
                         else setLoaderView(index);
-                        await getData(`${App_url.link.ENDPOINT_LINKS.DOC_DOWNLOAD}/${file_path?.[props?.file_name]?.name}`, user_data?.access_token, dispatch, isDownload, file_path?.[props?.file_name]?.original_name);
+                        await getData(`${App_url.link.ENDPOINT_LINKS.DOC_DOWNLOAD}/${file_path?.[props?.file_name]?.name}`, user_data?.accessToken, dispatch, isDownload, file_path?.[props?.file_name]?.original_name);
                         if (isDownload)
                             setLoader("");
                         else setLoaderView("");

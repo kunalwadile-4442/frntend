@@ -33,13 +33,13 @@ export interface IChangePasswordTypes {
 export interface IUserApiType {
   status: string;
   user: IUserTypes;
-  access_token: string;
+  accessToken: string;
 }
 
 export interface IUserRes {
    user_data ?: IUserApiType;
    is_Login: boolean;
-   access_token: string;
+   accessToken: string;
    status ?: any;
    user ?: IUserTypes;
    designation?:'director'|'project_manager'|'team_lead'|'quality_assurance'|'detailer'|''

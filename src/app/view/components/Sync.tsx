@@ -61,7 +61,7 @@ const Sync: React.FC<ISyncTypes> = (prop) => {
     if (req?.page !== 0) {
       getData(
         `${App_url.link.ENDPOINT_LINKS.SYNC_INVOICE_URL}/${type}/${req?.page}/${req?.limit}`,
-        user_data?.access_token
+        user_data?.accessToken
       ).then((data: any) => {
         const paid_counts = data?.paid_counts ?? 0;
         const totalCounts = data?.total_counts ?? 0;

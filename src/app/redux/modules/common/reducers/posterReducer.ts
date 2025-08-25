@@ -5,7 +5,7 @@ import { initialState, initialUserData } from "../../../../utils/constants/stati
 
 const initialData: InitialStateType = {
   is_login: false,
-  access_token: '',
+  accessToken: '',
   locality_list: initialState,
   role_list: initialState,
   user_profile: initialUserData,
@@ -26,7 +26,7 @@ const posterReducer = createReducer(initialData, (builder) => {
     return { ...state, is_login: action.payload };
   });
   builder.addCase(ActionTypes.ACCESS_TOKEN, (state, action: Action) => {
-    return { ...state, access_token: action.payload };
+    return { ...state, accessToken: action.payload };
   });
   builder.addCase(ActionTypes.ADMIN_LOGOUT, (state) => {
     localStorage.removeItem('persist:chathub-store');

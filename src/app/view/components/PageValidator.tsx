@@ -12,7 +12,7 @@ export default function PageValidator() {
   const isDashboard = useMemo(()=>{
     return SidebarListing?.find((item)=>item?.route === "/dashboard")
   },[SidebarListing])
-  if(!user_data?.access_token){
+  if(!user_data?.accessToken){
     return(
         <Navigate to={App_url.link.SIGNIN_URL} />
     )

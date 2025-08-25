@@ -38,7 +38,7 @@ export default function UploadFileComponent() {
       const response = await postData(
         App_url.link.ENDPOINT_LINKS.UPLOAD_FILE,
         formData,
-        user_data.access_token,
+        user_data.accessToken,
         "multipart/form-data"
       );
       setLoader(false);

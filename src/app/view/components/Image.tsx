@@ -15,7 +15,7 @@ interface ImagesProps {
 }
 
 const Images: React.FC<ImagesProps> = (props) => {
-  // const { access_token } = useSelector((state: any) => state[App_url.allReducers]);
+  // const { accessToken } = useSelector((state: any) => state[App_url.allReducers]);
   const [imageSrc, setImageSrc] = useState<string | null>(null);
 
   useEffect(() => {
@@ -27,7 +27,7 @@ const Images: React.FC<ImagesProps> = (props) => {
         setImageSrc(img.src);
       };
     }
-    //  else if (access_token && window.location.hostname === 'localhost') {
+    //  else if (accessToken && window.location.hostname === 'localhost') {
     //   fetchData();
     // }
     return () => {
@@ -51,7 +51,7 @@ const Images: React.FC<ImagesProps> = (props) => {
 
   // const fetchImageWithAuthorization = async (url: string) => {
   //   const headers = new Headers();
-  //   headers.append('Authorization', access_token);
+  //   headers.append('Authorization', accessToken);
   //   const requestOptions: RequestInit = {
   //     method: 'GET',
   //     headers: headers,

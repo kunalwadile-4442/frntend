@@ -16,8 +16,8 @@ export function geoCodeAddress(address) {
 }
 
 
-export const getGeoCode:any = async (address,access_token) => {
- return getData(`/${App_url.link.ENDPOINT_LINKS.GMAP_GEOCODE_URL}${address}`,access_token).then((resp)=>{
+export const getGeoCode:any = async (address,accessToken) => {
+ return getData(`/${App_url.link.ENDPOINT_LINKS.GMAP_GEOCODE_URL}${address}`,accessToken).then((resp)=>{
     return resp
   })
 };
@@ -46,7 +46,7 @@ const AutoCompletePlace = (props: IAutoCompletePlace) => {
   const [showList, setShowList] = useState(false);
   const [cursor, setCursor] = useState(0);
   const [address, setAddress] = useState('');
-  const { user_data,access_token } = usePosterReducers();
+  const { user_data,accessToken } = usePosterReducers();
   const dropdownRef = useRef(null);
 
   useEffect(() => {
@@ -76,7 +76,7 @@ const AutoCompletePlace = (props: IAutoCompletePlace) => {
         country: props?.country,
         type: 'geocode'
       }
-      const response = await getLocation(App_url.link.ENDPOINT_LINKS.GOOGLE_MAP, user_data?.access_token, payload); // Assuming 'us' for country code
+      const response = await getLocation(App_url.link.ENDPOINT_LINKS.GOOGLE_MAP, user_data?.accessToken, payload); // Assuming 'us' for country code
       if (response?.status === 200) {
         if (!showList) setShowList(true);
         setLocationList(response?.data?.predictions);
@@ -101,7 +101,7 @@ const AutoCompletePlace = (props: IAutoCompletePlace) => {
   };
 
   const getGeoCodeRequest = async (address, field) => {
-    const response:any = await getGeoCode(address,access_token);
+    const response:any = await getGeoCode(address,accessToken);
     if (response?.status) {
       onSelectLocation(response?.data);
       if (field) {

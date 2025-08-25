@@ -1,13 +1,13 @@
 // utils/googleMapsApi.js
 import axios from 'axios';
 
-export const getLocation = async (api_url?:any, access_token?:any, data?:any, pdf?:any) => {
+export const getLocation = async (api_url?:any, accessToken?:any, data?:any, pdf?:any) => {
     const headers: any = {
         'Accept':"application/json",
       }
 
-      if(access_token){
-        headers.Authorization = `Bearer ${access_token}`
+      if(accessToken){
+        headers.Authorization = `Bearer ${accessToken}`
 
       }
       if(pdf){

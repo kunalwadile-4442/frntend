@@ -7,7 +7,7 @@ const selectPosterReducers = createSelector(
   (state: RootState) => state?.combinedReducer,
   (combinedReducer) => ({
     ...combinedReducer?.usePosterReducers,
-    access_token: combinedReducer?.user_data?.access_token,
+    accessToken: combinedReducer?.user_data?.accessToken,
     user_data: combinedReducer?.user_data,
     user_id: combinedReducer?.user_data?.user?.id,
     user: combinedReducer?.user_data?.user,

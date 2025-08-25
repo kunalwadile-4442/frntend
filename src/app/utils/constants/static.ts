@@ -8,6 +8,8 @@ export const App_url = {
     SIGNIN_URL: "/signin",
     FORGET_PASSWORD_URL: "/forget-password",
     RESET_PASSWORD_URL: "/reset-password",
+    CONFIRM_PASSWORD_URL: "/confirm-password",
+
     DASHBOARD_URL: "/dashboard",
     COLLEGE_MASTER_URL: "/college-management/college-master",
     ADD_COLLEGE_MASTER_URL: "/college-management/college-master/add",
@@ -87,9 +89,10 @@ export const App_url = {
     ENDPOINT_LINKS: {
       SIGN_IN: "/api/v1/auth/login",
       FORGET_PASSWORD: "/api/v1/auth/forgot-password",
-      RESET_PASSWORD: "/api/v1//auth/reset-password",
+      RESET_PASSWORD: "/api/v1/auth/reset-password",
+      VERIFY_OTP: "/api/v1/auth/verify-otp",
+      
       LOG_OUT: "/api/v1/auth/logout",
-
       UPLOAD_FILE: "/api/users/upload",
       GET_USER_DETAILS: "/api/users/me",
       DOC_DOWNLOAD: "/api/document/download",
@@ -430,7 +433,7 @@ export const initialUserData = {
     user_type: "",
     role: "",
   },
-  access_token: "",
+  accessToken: "",
 };
 
 

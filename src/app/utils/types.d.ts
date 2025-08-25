@@ -159,7 +159,7 @@ export interface IShowModalPopup {
 
 export interface InitialStateType {
   is_login: boolean;
-  access_token: string;
+  accessToken: string;
   locality_list: ILocalityTypesRes;
   role_list: IRoleTypesRes;
   socketResponse: ISocketResponse;
@@ -191,7 +191,7 @@ export interface IUserTypes {
 interface IUserApiType {
   status: string;
   user: User;
-  access_token: string;
+  accessToken: string;
 }
 
 export interface IInternalUserTypesRes {
@@ -200,12 +200,11 @@ export interface IInternalUserTypesRes {
 }
 
 export interface ILoginTypes {
-  email: string;
-  password: string;
-  confirmNewPassword: string;
-  otp: string;
+  email?: string
+  password?: string
+  resetOTP?: string
+  confirmNewPassword?: string
 }
-
 export type IToggleWarnModalTypes =
   | "delete"
   | "edit"

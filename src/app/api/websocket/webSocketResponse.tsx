@@ -21,7 +21,7 @@ export const handleSocketResponse = async (
   send: any,
   navigate: any,
   user_data?: any,
-  access_token?: any,
+  accessToken?: any,
 ) => (async (dispatch, getState) => {
 
   const response = data;

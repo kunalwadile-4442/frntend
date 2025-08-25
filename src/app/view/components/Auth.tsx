@@ -6,7 +6,7 @@ import InputField from "./InputField";
 import Button from "./button/Button";
 import { App_url } from "../../utils/constants/static";
 import { ILoginTypes } from "../../utils/types";
-import { AuthReq, patchData, postData } from "../../api/rest/fetchData";
+import { AuthReq, fetchData, patchData, postData } from "../../api/rest/fetchData";
 import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
@@ -18,7 +18,7 @@ const Auth = () => {
   const navigate = useNavigate();
   const loc = useLocation();
   const dispatch = useDispatch();
-  const { access_token } = usePosterReducers();
+  const { accessToken } = usePosterReducers();
   const path = loc.pathname;
   const { state } = loc;
   const [loader, setLoader] = useState(false);
@@ -51,7 +51,7 @@ const Auth = () => {
   const startTimer = () => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (emailRegex.test(email)) {
-      postData(App_url.link.ENDPOINT_LINKS.FORGET_PASSWORD, { email: email }, access_token).then((resp) => {
+      postData(App_url.link.ENDPOINT_LINKS.FORGET_PASSWORD, { email: email }, accessToken).then((resp) => {
         if (resp?.status === 200) {
           toast.success("OTP sent successfully");
           setIsRunning(true);
@@ -101,18 +101,41 @@ const Auth = () => {
 
         }
       });
-    } else if (path === App_url.link.FORGET_PASSWORD_URL) {
-
-      navigate(App_url.link.RESET_PASSWORD_URL, { state: { otp: data?.otp } });
-      setLoader(false);
-    } else if (path === App_url.link.RESET_PASSWORD_URL && state.otp) {
-      patchData(`${App_url.link.ENDPOINT_LINKS.RESET_PASSWORD}/${state.otp}`, data, access_token).then(
-        (resp: any) => {
+    } 
+     else if (path === App_url.link.FORGET_PASSWORD_URL) {
+        AuthReq(App_url.link.ENDPOINT_LINKS.VERIFY_OTP, data).then((resp: any) => {
+          console.log(resp);
           setLoader(false);
-          if (resp?.status === 200) {
-            toast.success("Password reset Successfully");
+          if (resp?.data?.statusCode === 200) {
+            localStorage.setItem("resetEmail", data.email);
+            toast.success("OTP Verified Successfully"); 
+            navigate(App_url.link.CONFIRM_PASSWORD_URL);
           }
-          navigate(App_url.link.SIGNIN_URL);
+          else {
+            toast.error("Invalid OTP");
+            navigate(App_url.link.SIGNIN_URL);
+          }
+        }
+      );
+    }
+    else if (path === App_url.link.CONFIRM_PASSWORD_URL) {
+      const email = localStorage.getItem("resetEmail"); 
+       const resetData = {
+          email,                
+          password: data.password,      
+          confirmNewPassword: data.confirmNewPassword 
+        };
+        
+        AuthReq(App_url.link.ENDPOINT_LINKS.RESET_PASSWORD, resetData).then((resp: any) => {
+          console.log(resp);
+          setLoader(false);
+          if (resp?.data?.statusCode === 200) {
+            toast.success("Password reset Successfully");
+            navigate(App_url.link.SIGNIN_URL);
+          }
+          else {
+            toast.error("Password not reset");
+          }
         }
       );
     }
@@ -159,7 +182,7 @@ const Auth = () => {
                 <InputField
                   name={"Email id"}
                   placeholder="Please enter your email id"
-                  className="my-3"
+                  className="my-5"
                   labelClassName="font-[600] text-[#202F57] font-inter"
                   inputClassName="h-10 rounded-lg font-inter"
                   register={register("email", {
@@ -180,12 +203,13 @@ const Auth = () => {
 
               {(path === App_url.link.SIGNIN_URL ||
                 path === App_url.link.INITIAL_URL ||
+                path === App_url.link.CONFIRM_PASSWORD_URL ||
                 path === App_url.link.RESET_PASSWORD_URL) && (
                   <InputField
                     name={"Password"}
                     placeholder="Please enter your password"
                     type="password"
-                    className="mt-2 mb-4 "
+                    className="mt-8 mb-4 "
                     labelClassName="font-[600] text-[#202F57] font-inter"
                     inputClassName="h-10 rounded-lg text-[#767B86] bg-[#FFFFFF] font-inter"
                     register={register("password", {
@@ -199,12 +223,13 @@ const Auth = () => {
                     required
                   />
                 )}
-              {path === App_url.link.RESET_PASSWORD_URL && (
+              {
+              path === App_url.link.CONFIRM_PASSWORD_URL && (
                 <InputField
                   name={"Confirm Password"}
                   placeholder="Confirm Your password"
                   type="password"
-                  className="mt-2 mb-4"
+                  className="mt-8 mb-4"
                   labelClassName="font-[600] text-[#202F57] font-inter"
                   inputClassName="h-10 rounded-lg text-[#767B86] bg-[#FFFFFF] font-inter"
                   register={register("confirmNewPassword", {
@@ -255,7 +280,7 @@ const Auth = () => {
                       inputClassName="h-10 rounded-lg font-inter"
                       error={errors.email}
                     />
-                    <div className="mt-8 ">
+                    <div className="mt-4">
                       <Button
                         label={isRunning ? "Sent" : "Send code"}
                         icon={isRunning ? App_url.image.true : ""}
@@ -274,7 +299,7 @@ const Auth = () => {
               {path === App_url.link.FORGET_PASSWORD_URL && (
                 <InputField
                   name={"Code "}
-                  register={register("otp", {
+                  register={register("resetOTP", {
                     required: "OTP is required",
                     maxLength: {
                       value: 6,
@@ -294,7 +319,7 @@ const Auth = () => {
                   className="my-3"
                   labelClassName="font-[600] text-[#202F57] font-inter"
                   inputClassName="h-10 rounded-lg font-inter"
-                  error={errors.otp}
+                  error={errors.resetOTP}
                 />
               )}
               <Button

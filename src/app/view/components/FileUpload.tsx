@@ -94,7 +94,7 @@ const FileUpload: React.FC<FileUploadProps> = (props) => {
             const response = await postData(
               App_url.link.ENDPOINT_LINKS.UPLOAD_FILE,
               formData,
-              user_data.access_token,
+              user_data.accessToken,
               "multipart/form-data"
             );
 
@@ -143,7 +143,7 @@ const FileUpload: React.FC<FileUploadProps> = (props) => {
         }
         await getData(
           `${App_url.link.ENDPOINT_LINKS.DOC_DOWNLOAD}/${file_path?.name}`,
-          user_data?.access_token,
+          user_data?.accessToken,
           dispatch,
           isDownload,
           // selected_value?.original_name
