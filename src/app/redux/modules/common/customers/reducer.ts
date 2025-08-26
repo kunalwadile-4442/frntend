@@ -1,10 +1,9 @@
 /* eslint-disable array-callback-return */
 
 import { ActionTypes } from './action';
-import { ICustomersRes } from "./types";
 
 
-const initialState: ICustomersRes = {
+const initialState: any = {
   customersList:{
     optionsList: [],
     parsedItems: [],
@@ -14,7 +13,7 @@ const initialState: ICustomersRes = {
   customerProjects: null,
 };
 
-const customersReducers = (state: ICustomersRes = initialState, action): ICustomersRes => {
+const customersReducers = (state: any = initialState, action): any => {
   switch (action?.type) {
     case ActionTypes.SET_STORE_CUSTOMERS_LIST:{
       const optionsList = action?.payload?.parsedItems?.map((item, index)=>({

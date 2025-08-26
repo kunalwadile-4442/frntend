@@ -10,7 +10,6 @@ import { usePosterReducers } from "../../redux/getdata/usePostReducer";
 import SpinnerSm from "./loader/SpinnerSm";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
-import { FileData } from "../../redux/modules/backOffice/projectManagement/types";
 import { shortenText } from "../../utils/common";
 import { setShowModalPopup } from "../../redux/actions/action";
 import Scrollbar from "./Scrollbar";
@@ -32,7 +31,6 @@ interface FileUploadProps {
   label?: string;
   isUpload?: boolean;
   required?: boolean;
-  defaultDoc?: FileData[];
   callBackDelete?: Function;
   excelIcon?: boolean;
   renderFilesClassName?: string

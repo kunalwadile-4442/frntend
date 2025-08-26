@@ -84,17 +84,7 @@ export const WebSocketProvider: React.FC<{ children: React.ReactNode }> = ({
     }
   };
 
-  useEffect(() => {
-    getUserDetails();
-    if (isConnect && user_data?.user?.role === "back_office") {
-      const joinPayload = {
-        type: "ChatMessageService",
-        action: "joinGroups",
-        payload: {},
-      };
-      send(joinPayload);
-    }
-  }, [user_data?.accessToken, isConnect]);
+
 
   function isAuthPath(): boolean {
     if (

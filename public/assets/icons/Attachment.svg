@@ -2,8 +2,8 @@
 <g filter="url(#filter0_d_2172_5836)">
 <rect x="1" y="1" width="20" height="20" rx="10" fill="white" shape-rendering="crispEdges"/>
 <g clip-path="url(#clip0_2172_5836)">
-<path d="M7.5625 11H14.4375" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M11 7.5625V14.4375" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M7.5625 11H14.4375" stroke="black" strokeLinecap="round" strokeLinejoin="round"/>
+<path d="M11 7.5625V14.4375" stroke="black" strokeLinecap="round" strokeLinejoin="round"/>
 </g>
 </g>
 <defs>

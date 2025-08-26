@@ -2,12 +2,10 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable eqeqeq */
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect } from "react";
-import { Controller, useForm } from "react-hook-form";
-import { useParams } from "react-router-dom";
+import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
+import { useParams } from "react-router-dom";
 import { useWebSocket } from "../../../../api/websocket/WebSocketContext";
-import { usePosterReducers } from "../../../../redux/getdata/usePostReducer";
 import { useUiReducer } from "../../../../redux/getdata/useUiReducer";
 import { IChangePasswordTypes } from "../../../../redux/modules/common/user_data/types";
 import { formContent } from "../../../../utils/common";
@@ -32,7 +30,6 @@ const ChangePassword = (props?: IChangePassword) => {
     const { Title = "Change Password" } = props;
     const dispatch = useDispatch();
     const param = useParams();
-    const { products, tax, supplierList, customerDetails, customersList, productUnitService } = usePosterReducers();
     const { clearForm } = useUiReducer();
     const { send, isConnect } = useWebSocket();
 

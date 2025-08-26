@@ -2,14 +2,12 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useMemo, useRef, useState } from "react";
-import { App_url, distributionMailKeywords } from "../../utils/constants/static";
+import { App_url  } from "../../utils/constants/static";
 import Icon from "./Icon";
 import { useWebSocket } from "../../api/websocket/WebSocketContext";
-import { usePosterReducers } from "../../redux/getdata/usePostReducer";
 import { UUID4 } from "../../utils/common";
 
 function TextEditor(props) {
-    const { customersList } = usePosterReducers()
     const { send, isConnect } = useWebSocket()
     const [content, setContent] = useState(props?.field?.value);
     const [selection, setSelection] = useState(null);
@@ -21,7 +19,7 @@ function TextEditor(props) {
     const [cursorPosition, setCursorPosition] = useState({ start: 0, end: 0 });
     const [menuPosition, setMenuPosition] = useState({ top: 0, left: 0 })
     const [showMenu, setShowMenu] = useState(false)
-    const menuRef = useRef(null); // Ref for the menu
+    const menuRef = useRef(null); // Ref for the menu‚
     const [tagText, setTagText] = useState("")
     const [cursor, setCursor] = useState(0);
     const [valueCheck, setValueCheck] = useState(false)
@@ -388,16 +386,10 @@ function TextEditor(props) {
             e.preventDefault();
             e.stopPropagation();
             if (e.key === 'Enter') {
-                if (distributionMailKeywords[cursor]) {
-                    const cursorPosition = getCursorPosition(editorRef.current);
-                    callSelectTag(e, distributionMailKeywords[cursor]);
-                    setCursor(0);
-                    // setCursorToEnd(editorRef.current);
-                }
-            } else if (e.keyCode === 38 && cursor > 0) {
+               if (e.keyCode === 38 && cursor > 0) {
                 gotoMain(-90);
                 setCursor(cursor - 1);
-            } else if (e.keyCode === 40 && cursor < distributionMailKeywords?.length - 1) {
+            } else if (e.keyCode === 40)  {
                 gotoMain(+10);
                 setCursor(cursor + 1);
             }
@@ -448,20 +440,8 @@ function TextEditor(props) {
                         tabIndex={-1}
                         id="menuScroll1"
                     >
-                        {distributionMailKeywords?.map((item, index) => (
-                            <React.Fragment key={index}>
-                                <div className={cursor === index ? 'list-item text-sm actions' : 'list-item text-sm'} onClick={(e) => callSelectTag(e, item)} id={'innerDivScroll13' + index}
-                                    onMouseEnter={() => setCursor(index)}
-                                >
-                                    {item?.name}
-                                </div>
-                            </React.Fragment>
-                        ))}
-                        {distributionMailKeywords?.length == 0 && (
-                            <div className="list-item text-sm">
-                                No data Found
-                            </div>
-                        )}
+                       
+                        
                     </div>
                     <div className="menu_backdrop" onClick={(e) => {
                         e.preventDefault();
@@ -477,6 +457,7 @@ function TextEditor(props) {
             )}
         </React.Fragment>
     );
+}
 }
 
 export default TextEditor;

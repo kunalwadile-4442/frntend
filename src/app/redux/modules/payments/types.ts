@@ -1,4 +1,4 @@
-import {  IPhoneTypes } from "../../../../utils/types";
+import {  IPhoneTypes } from "../../../utils/types";
 
 export interface IInternalUserTypes {
   proficiency?:string

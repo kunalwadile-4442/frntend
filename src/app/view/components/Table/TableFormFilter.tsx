@@ -128,7 +128,7 @@ const TableFormFilter: React.FC<ITableLayoutProps> = forwardRef(function (props,
     const { isUserType = true, SearchInput = true, showTableColumn, RequestPayload, showFilter, getValues, setRequestPayload, setShowTableColumn, setShowFilter, } = props;
     const { register, reset, setValue } = props;
     const dispatch = useDispatch();
-    const { user_data, searchList, column_permissions } = usePosterReducers();
+    const { user_data, column_permissions } = usePosterReducers();
     const ToggleLabel = [
         { label: "Front Office", value: "front_office" },
         { label: "Back Office", value: "back_office" },

@@ -12,14 +12,12 @@ import Multiselect from "./Multiselect";
 import { usePosterReducers } from "../../redux/getdata/usePostReducer";
 import { useDispatch } from "react-redux";
 import { setFormPopup } from "../../redux/actions/action";
-import { IEmailTypes } from "../../redux/modules/frontOffice/distribution/types";
 import { postData } from "../../api/rest/fetchData";
 import { extractTextFromHTML, formatDate2 } from "../../utils/common";
-import { setEmailDetail } from "../../redux/modules/frontOffice/distribution/action";
 import { ValidateForm } from "../../utils/constants/static";
 import FileUpload from "./FileUpload";
 import CheckboxList from "./button/CheckBoxList";
-import { FileData, ProjectListTypes } from "../../redux/modules/backOffice/projectManagement/types";
+
 
 interface IRestTypes {
   url: string;
@@ -40,12 +38,12 @@ interface ISendFormProps {
     required?: boolean;
     multiple?: boolean;
     allowedExtensions?: string[];
-    defaultValue?: FileData[];
+    defaultValue?: any[];
   };
-  onSubmitCallback?: (data: IEmailTypes, is_mail?: boolean) => void;
+  onSubmitCallback?: (data: any, is_mail?: boolean) => void;
   onOptionCallback?: (data: string[]) => void;
   checkboxList?: { value: string; label: string }[];
-  isSubmission?: ProjectListTypes;
+  isSubmission?: any;
   callBackDelete?: Function;
   isSubject?: boolean;
   isMailTemplate?: boolean;
@@ -60,7 +58,7 @@ const SendMailCopy: React.FC<ISendFormProps> = ({ ...prop }) => {
     setValue,
     register,
     formState: { errors },
-  } = useForm<IEmailTypes>({
+  } = useForm<any>({
     defaultValues: {
       option: [], // Ensure the field is initialized as an array
     },
@@ -94,7 +92,6 @@ const SendMailCopy: React.FC<ISendFormProps> = ({ ...prop }) => {
         socketResponse?.status
       ) {
         dispatch(setFormPopup({ status: "hide" }));
-        dispatch(setEmailDetail(null));
         reset();
       }
     }
@@ -106,7 +103,7 @@ const SendMailCopy: React.FC<ISendFormProps> = ({ ...prop }) => {
   // }
   // }, [option])
 
-  function onSubmit(data: IEmailTypes, is_mail: boolean) {
+  function onSubmit(data: any, is_mail: boolean) {
     // const finalData={...data, is_mail: is_mail}
     if (prop?.onSubmitCallback) {
       prop?.onSubmitCallback(data, is_mail);

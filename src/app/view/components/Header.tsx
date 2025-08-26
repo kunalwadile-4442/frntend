@@ -39,12 +39,12 @@ const Header = ({ toggleSidebar, isActive }: any) => {
   const icon1 = SidebarListing?.find(icon => icon.title === replacedPath);
 
   const options = [
-    { label: "Logout", value: "logout" },
+    { label: "Profile Setting", value: "Profile" },
   ];
 
   const onChange = (e: any) => {
-    if (e.value !== 'change-password') {
-      dispatch(WarnFormSetFunctions({ status: "delete", url: "logout", name: "Logout" }))   
+    if (e.value == 'Profile') {
+      navigate(App_url.link.EDIT_PROFILE)
     } else {
       navigate(App_url.link.CHANGE_PASSWORD)
     }

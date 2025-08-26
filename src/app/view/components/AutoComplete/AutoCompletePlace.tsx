@@ -8,19 +8,10 @@ import InputField from '../InputField';
 import { Controller } from 'react-hook-form';
 import { getData } from '../../../api/rest/fetchData';
 
-export function geoCodeAddress(address) {
-  const geocodingUrl = `${import.meta.env.VITE_APP_ENDPOINT_URL}/${App_url.link.ENDPOINT_LINKS.GMAP_ADDRESS_URL}${address}`;
-  const result = fetch(geocodingUrl).then(result => result.json())
-    .then(res => res);
-  return result;
-}
 
 
-export const getGeoCode:any = async (address,accessToken) => {
- return getData(`/${App_url.link.ENDPOINT_LINKS.GMAP_GEOCODE_URL}${address}`,accessToken).then((resp)=>{
-    return resp
-  })
-};
+
+
 
 interface IAutoCompletePlace {
   value?: string;
@@ -69,48 +60,16 @@ const AutoCompletePlace = (props: IAutoCompletePlace) => {
     }
   };
 
-  const callAddressSearch = async (address, field) =>{
-    if (address != "") {
-      const payload = {
-        address: address,
-        country: props?.country,
-        type: 'geocode'
-      }
-      const response = await getLocation(App_url.link.ENDPOINT_LINKS.GOOGLE_MAP, user_data?.accessToken, payload); // Assuming 'us' for country code
-      if (response?.status === 200) {
-        if (!showList) setShowList(true);
-        setLocationList(response?.data?.predictions);
-      }
-      onSelectLocation({ address: address });
-      if (field) {
-        field.onChange({ address: address });
-      }
-    }
-  }
 
   const onSelectLocationHandler = async (e, index, field) => {
     e.preventDefault();
     const selected = locationList[index];
-    if (selected) {
-      await getGeoCodeRequest(selected?.description, field);
-    } else {
-      await getGeoCodeRequest(address, field);
-    }
+    
     setShowList(false);
     setLocationList([]);
   };
 
-  const getGeoCodeRequest = async (address, field) => {
-    const response:any = await getGeoCode(address,accessToken);
-    if (response?.status) {
-      onSelectLocation(response?.data);
-      if (field) {
-        field.onChange(response?.data);
-        props?.onChange?.(response?.data);
-      }
-      resetState();
-    }
-  };
+
   const onSelectLocation = (item) => {
     if (props?.onSelectLocation) {
       props?.onSelectLocation(item);
@@ -163,7 +122,6 @@ const AutoCompletePlace = (props: IAutoCompletePlace) => {
         if (e.key === 'Enter' && !e.shiftKey) {
           e.preventDefault();
           e.stopPropagation();
-          callAddressSearch(value ? value : props?.value ? props?.value : "", field)
         }
       }
     }
@@ -198,7 +156,7 @@ const AutoCompletePlace = (props: IAutoCompletePlace) => {
               value={value ? value : props?.value ? props?.value : ""}
               onFocus={onFocus}
               rightLabel={value || props?.value ?<Icon attrIcon={App_url.image.search} />:""}
-              onClickRightLabel={()=>callAddressSearch(value ? value : props?.value ? props?.value : "", field)}
+              // onClickRightLabel={()=>callAddressSearch(value ? value : props?.value ? props?.value : "", field)}
               onKeyDown={(e) => onKeyDown(e, field, value)}
               useFor={props?.type}
               rows={3}

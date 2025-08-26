@@ -76,12 +76,12 @@ const Auth = () => {
       AuthReq(App_url.link.ENDPOINT_LINKS.SIGN_IN, data).then((response) => {
         setLoader(false);
         try {
-          if (response?.status === 200) {
+          if (response?.data.statusCode === 200) {
             console.log(response.data);
-       
             if (response?.data?.data?.user?.role !== "admin") {
               toast.error("Do not have permission please contact administrator");
-            } else {
+            } 
+            else {
               const payload = {
                 ...response?.data?.data,
                 user: {

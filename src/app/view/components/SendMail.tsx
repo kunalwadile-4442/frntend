@@ -12,10 +12,9 @@ import Multiselect from "./Multiselect";
 import { usePosterReducers } from "../../redux/getdata/usePostReducer";
 import { useDispatch } from "react-redux";
 import { setFormPopup } from "../../redux/actions/action";
-import { IEmailTypes } from "../../redux/modules/frontOffice/distribution/types";
 import { postData } from "../../api/rest/fetchData";
 import { extractTextFromHTML, formatDate2 } from "../../utils/common";
-import { setEmailDetail, setTaxDetails } from "../../redux/modules/frontOffice/distribution/action";
+
 import { ValidateForm } from "../../utils/constants/static";
 
 interface IRestTypes {
@@ -39,7 +38,7 @@ const SendMail: React.FC<ISendFormProps> = (prop) => {
     reset,
     control,
     formState: { errors },
-  } = useForm<IEmailTypes>();
+  } = useForm<any>();
   const { socketResponse, email_details } = usePosterReducers();
 
   const { clearForm } = useUiReducer();
@@ -55,14 +54,13 @@ const SendMail: React.FC<ISendFormProps> = (prop) => {
       setLoader(false);
       if ( socketResponse?.request?.payload?.inquiry_id === prop?.request?.payload?.inquiry_id && socketResponse?.status ) {
         dispatch(setFormPopup({ status: "hide" }));
-        dispatch(setEmailDetail(null))
         reset({email_to:'',email_body:''});
       reset()
       }
     }
   }, [socketResponse]);
 
-  function onSubmit(data: IEmailTypes,is_mail:boolean) {
+  function onSubmit(data: any,is_mail:boolean) {
     // const finalData={...data, is_mail: is_mail}
     if(data.email_subject != undefined){
       data.email_subject = extractTextFromHTML(data?.email_subject)

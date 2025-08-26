@@ -10,79 +10,13 @@ export const App_url = {
     RESET_PASSWORD_URL: "/reset-password",
     CONFIRM_PASSWORD_URL: "/confirm-password",
 
-    DASHBOARD_URL: "/dashboard",
+    EDIT_PROFILE : "/profile/edit",
+  
+
+    DASHBOARD_URL: "/admin/dashboard",
     COLLEGE_MASTER_URL: "/college-management/college-master",
     ADD_COLLEGE_MASTER_URL: "/college-management/college-master/add",
     EDIT_COLLEGE_MASTER_URL: "/college-management/college-master/:id",
-
-    STD_MANAGEMENT_URL: "/student-management",
-    ADD_STUDENT_URL: "/student-management/add",
-    EDIT_STUDENT_URL: "/student-management/:id",
-    STD_MANAGEMENT_COLLEGE_LIST_URL: "/student-management/college-list",
-
-    PACKAGE_URL: "/master-management/packages",
-    ADD_PACKAGE_URL: "/master-management/packages/add",
-    EDIT_PACKAGE_URL: "/master-management/packages/:id",
-
-    CATEGORY_URL: "/master-management/category",
-    ADD_CATEGORY_URL: "/master-management/category/add",
-    EDIT_CATEGORY_URL: "/master-management/category/:id",
-
-    SUB_CATEGORY_URL: "/master-management/sub-category",
-    ADD_SUB_CATEGORY_URL: "/master-management/sub-category/add",
-    EDIT_SUB_CATEGORY_URL: "/master-management/sub-category/:id",
-
-    UG_URL: "/master-management/ug",
-    ADD_UG_URL: "/master-management/ug/add",
-    EDIT_UG_URL: "/master-management/ug/:id",
-
-    PG_URL: "/master-management/pg",
-    ADD_PG_URL: "/master-management/pg/add",
-    EDIT_PG_URL: "/master-management/pg/:id",
-
-    DISTRICT_URL: "/master-management/district",
-    ADD_DISTRICT_URL: "/master-management/district/add",
-    EDIT_DISTRICT_URL: "/master-management/district/:id",
-
-    BOARD_EXAM_URL: "/master-management/board-exam",
-    ADD_BOARD_EXAM_URL: "/master-management/board-exam/add",
-    EDIT_BOARD_EXAM_URL: "/master-management/board-exam/:id",
-
-    PASSING_YEAR_URL: "/master-management/passing-year",
-    ADD_PASSING_YEAR_URL: "/master-management/passing-year/add",
-    EDIT_PASSING_YEAR_URL: "/master-management/passing-year/:id",
-
-    COLLEGE_TYPE_URL: "/master-management/college-type",
-    ADD_COLLEGE_TYPE_URL: "/master-management/college-type/add",
-    EDIT_COLLEGE_TYPE_URL: "/master-management/college-type/:id",
-
-
-
-    PAYMENTS_URL: "/payments",
-    ADD_PAYMENTS_URL: "/payments/add",
-    EDIT_PAYMENTS_URL: "/payments/:id",
-  
-    ACTIVITY_LOG_URL: "/activity-log",
-    ADD_ACTIVITY_LOG_URL: "/activity-log/add",
-    EDIT_ACTIVITY_LOG_URL: "/activity-log/:id",
-  
-    REPORT_URL: "/report",
-    ADD_REPORT_URL: "/report/add",
-    EDIT_REPORT_URL: "/report/:id",
-  
-    NEWS_ALERT_URL: "/news-alert",
-    ADD_NEWS_ALERT_URL: "/news-alert/add",
-    EDIT_NEWS_ALERT_URL: "/news-alert/:id",
-  
-    NOTIFICATION_URL: "/notification",
-    ADD_NOTIFICATION_URL: "/notification/add",
-    EDIT_NOTIFICATION_URL: "/notification/:id",
-  
-    ADMISSION_URL: "/admission",
-    ADD_ADMISSION_URL: "/admission/add",
-    EDIT_ADMISSION_URL: "/admission/:id",
-
-
 
 
 
@@ -91,10 +25,10 @@ export const App_url = {
       FORGET_PASSWORD: "/api/v1/auth/forgot-password",
       RESET_PASSWORD: "/api/v1/auth/reset-password",
       VERIFY_OTP: "/api/v1/auth/verify-otp",
-      
+      GET_USER_DETAILS: "/api/v1/users/profile",
+
       LOG_OUT: "/api/v1/auth/logout",
       UPLOAD_FILE: "/api/users/upload",
-      GET_USER_DETAILS: "/api/users/me",
       DOC_DOWNLOAD: "/api/document/download",
       PDF_PREVIEW: "/api/document/order-download",
 
@@ -269,22 +203,6 @@ export const App_url = {
     passing_year: `${window.location.origin}/assets/icons/passing_year.svg`,
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   },
   file: { sample: `${window.location.origin}/assets/file/sample.xlsx` },
   allReducers: (state: any) => state?.allReducers,
@@ -306,110 +224,105 @@ export const adminsidebarcontent = [
         route: App_url.link.COLLEGE_MASTER_URL,
         icon: App_url.image.college_master,
       },
-      // {
-      //   title: "College Cutoff",
-      //   route: App_url.link.COLLEGE_CUTOFF_URL,
-      //   icon: App_url.image.college_cutoff,
-      // },
     ],
   },
-  {
-    title: "Student Management",
-    icon: App_url.image.student_management,
-    children: [
-      {
-        title: "Student List",
-        route: App_url.link.STD_MANAGEMENT_URL,
-        icon: App_url.image.college_master,
-      },
-      {
-        title: "College List",
-        route: App_url.link.STD_MANAGEMENT_COLLEGE_LIST_URL,
-        icon: App_url.image.college_cutoff,
-      },
-    ],
-  },
-  {
-    title: "Master Management",
-    icon: App_url.image.master_management,
-    children: [
-      {
-        title: "UG Courses",
-        route: App_url.link.UG_URL,  
-        icon: App_url.image.ug,
-      },
-      {
-        title: "PG Courses",
-        route: App_url.link.PG_URL, 
-        icon: App_url.image.ug,
-      },
-      {
-        title: "Packages",
-        route: App_url.link.PACKAGE_URL,  
-        icon: App_url.image.package,
-      },
-      {
-        title: "Category/Cast",
-        route: App_url.link.CATEGORY_URL, 
-        icon: App_url.image.category,
-      },
-      {
-        title: "Sub Category/Cast",
-        route: App_url.link.SUB_CATEGORY_URL, 
-        icon: App_url.image.category,
-      },
-      {
-        title: "District",
-        route: App_url.link.DISTRICT_URL,  
-        icon: App_url.image.district,
-      },
-      {
-        title: "Board Exam",
-        route: App_url.link.BOARD_EXAM_URL,  
-        icon: App_url.image.board_exam,
-      },
-      {
-        title: "Passing Year",
-        route: App_url.link.PASSING_YEAR_URL,  
-        icon: App_url.image.passing_year,
-      },
-      {
-        title: "College Type",
-        route: App_url.link.COLLEGE_TYPE_URL,  
-        icon: App_url.image.college_cutoff,
-      },
-    ],
-  },
-  {
-    title: "Payments",
-    route: App_url.link.PAYMENTS_URL,
-    icon: App_url.image.payments,
-  },
-  {
-    title: "Activity Log",
-    route: App_url.link.ACTIVITY_LOG_URL,
-    icon: App_url.image.log,
-  },
-  {
-    title: "Report",
-    route: App_url.link.REPORT_URL,
-    icon: App_url.image.report,
-  },
-  {
-    title: "News Alert",
-    route: App_url.link.NEWS_ALERT_URL,
-    icon: App_url.image.news,
-  },
-  {
-    title: "Notification",
-    route: App_url.link.NOTIFICATION_URL,
-    icon: App_url.image.notification,
-  },
-  {
-    title: "Admission",
-    route: App_url.link.ADMISSION_URL,
-    icon: App_url.image.admission,
-  },
+  // {
+  //   title: "Student Management",
+  //   icon: App_url.image.student_management,
+  //   children: [
+  //     {
+  //       title: "Student List",
+  //       route: App_url.link.STD_MANAGEMENT_URL,
+  //       icon: App_url.image.college_master,
+  //     },
+  //     {
+  //       title: "College List",
+  //       route: App_url.link.STD_MANAGEMENT_COLLEGE_LIST_URL,
+  //       icon: App_url.image.college_cutoff,
+  //     },
+  //   ],
+  // },
+  // {
+  //   title: "Master Management",
+  //   icon: App_url.image.master_management,
+  //   children: [
+  //     {
+  //       title: "UG Courses",
+  //       route: App_url.link.UG_URL,  
+  //       icon: App_url.image.ug,
+  //     },
+  //     {
+  //       title: "PG Courses",
+  //       route: App_url.link.PG_URL, 
+  //       icon: App_url.image.ug,
+  //     },
+  //     {
+  //       title: "Packages",
+  //       route: App_url.link.PACKAGE_URL,  
+  //       icon: App_url.image.package,
+  //     },
+  //     {
+  //       title: "Category/Cast",
+  //       route: App_url.link.CATEGORY_URL, 
+  //       icon: App_url.image.category,
+  //     },
+  //     {
+  //       title: "Sub Category/Cast",
+  //       route: App_url.link.SUB_CATEGORY_URL, 
+  //       icon: App_url.image.category,
+  //     },
+  //     {
+  //       title: "District",
+  //       route: App_url.link.DISTRICT_URL,  
+  //       icon: App_url.image.district,
+  //     },
+  //     {
+  //       title: "Board Exam",
+  //       route: App_url.link.BOARD_EXAM_URL,  
+  //       icon: App_url.image.board_exam,
+  //     },
+  //     {
+  //       title: "Passing Year",
+  //       route: App_url.link.PASSING_YEAR_URL,  
+  //       icon: App_url.image.passing_year,
+  //     },
+  //     {
+  //       title: "College Type",
+  //       route: App_url.link.COLLEGE_TYPE_URL,  
+  //       icon: App_url.image.college_cutoff,
+  //     },
+  //   ],
+  // },
+  // {
+  //   title: "Payments",
+  //   route: App_url.link.PAYMENTS_URL,
+  //   icon: App_url.image.payments,
+  // },
+  // {
+  //   title: "Activity Log",
+  //   route: App_url.link.ACTIVITY_LOG_URL,
+  //   icon: App_url.image.log,
+  // },
+  // {
+  //   title: "Report",
+  //   route: App_url.link.REPORT_URL,
+  //   icon: App_url.image.report,
+  // },
+  // {
+  //   title: "News Alert",
+  //   route: App_url.link.NEWS_ALERT_URL,
+  //   icon: App_url.image.news,
+  // },
+  // {
+  //   title: "Notification",
+  //   route: App_url.link.NOTIFICATION_URL,
+  //   icon: App_url.image.notification,
+  // },
+  // {
+  //   title: "Admission",
+  //   route: App_url.link.ADMISSION_URL,
+  //   icon: App_url.image.admission,
+  // },
 ];
 
 export const initialState = {
@@ -877,34 +790,3 @@ export const ValidateForm = {
     },
   }),
 };
-
-export const distributionMailKeywords = [
-  { name: "BillAmount", value: "BillAmount", page: "Purchase Order Email,Sale Order Email,Invoice Email," }, // Sale, Purchase, Invoice
-  { name: "BillToCompanyName", value: "BillToCompanyName", page: "Purchase Order Email,Sale Order Email,Invoice Email," }, // Sale, Purchase, Invoice
-  { name: "BillToAddress", value: "BillToAddress", page: "Purchase Order Email,Sale Order Email,Inquiry Email,Invoice Email," }, // Inquiry, Sale, Purchase, Invoice
-  { name: "BolNo", value: "BolNo", page: "Invoice Email," }, //Invoice
-  { name: "RFQDate", value: "RFQDate", page: "Inquiry Email," }, //Invoice
-  { name: "CustomerEmail", value: "CustomerEmail", page: "Purchase Order Email,Sale Order Email,Inquiry Email,Invoice Email,Proposal Email," },// Inquiry, Sale, Purchase, Invoice
-  { name: "CustomerName", value: "CustomerName", page: "Submission Email,Listing Email,Purchase Order Email,Sale Order Email,Inquiry Email,Invoice Email,Proposal Email,AR Statement," },// Inquiry, Sale, Purchase, Invoice
-  { name: "DeliveryAddress", value: "DeliveryAddress", page: "Invoice Email," },//Invoice
-  { name: "DeliveryDate", value: "DeliveryDate", page: "Invoice Email," },//Invoice
-  { name: "DeliveryNotes", value: "DeliveryNotes", page: "Invoice Email," },//Invoice
-  { name: "DeliveryRef", value: "DeliveryRef", page: "Invoice Email," },//Invoice
-  { name: "ExpectedDeliveryDate", value: "ExpectedDeliveryDate", page: "Purchase Order Email,Sale Order Email,Inquiry Email,Invoice Email," },// Inquiry, Sale, Purchase, Invoice
-  { name: "InvoiceNo", value: "InvoiceNo", page: "Invoice Email," },//Invoice
-  { name: "PurchaseOrderNo", value: "PurchaseOrderNo", page: "Purchase Order Email,Invoice Email," },//Purchase, Invoice
-  { name: "ProjectName", value: "ProjectName", page: "Submission Email,Listing Email,Purchase Order Email,Sale Order Email,Inquiry Email,Invoice Email,Proposal Email," },// Inquiry, Sale, Purchase, Invoice
-  { name: "SaleOrderNo", value: "SaleOrderNo", page: "Purchase Order Email,Sale Order Email,Invoice Email," },// Sale, Purchase, Invoice
-  { name: "SiteLogo", value: "SiteLogo", page: "Submission Email,Listing Email,Proposal Email,Purchase Order Email,Sale Order Email,Invoice Email,Inquiry Email,Incoming Remark,AR Statement," },// Sale, Purchase, Invoice
-  { name: "ShipToAddress", value: "ShipToAddress", page: "Purchase Order Email,Sale Order Email,Inquiry Email,Invoice Email," },// Inquiry, Sale, Purchase, Invoice
-  { name: "ShipToCompanyName", value: "ShipToCompanyName", page: "Purchase Order Email,Sale Order Email,Invoice Email," },// Sale, Purchase, Invoice
-  { name: "SupplierName", value: "SupplierName", page: "Purchase Order Email,Sale Order Email,Invoice Email,Inquiry Email," },// Sale, Purchase, Invoice
-  { name: "Terms", value: "Terms", page: "Purchase Order Email,Sale Order Email,Invoice Email," },//Sale, Purchase, Invoice
-  { name: "ProposalId", value: "ProposalId", page: "Proposal Email," },//Sale, Purchase, Invoice
-  { name: "ProjectNo", value: "ProjectNo", page: "Submission Email,Listing Email," },// Inquiry, Sale, Purchase, Invoice
-  { name: "DrawingTable", value: "DrawingTable", page: "Submission Email," },
-  { name: "ListLog", value: "ListLog", page: "Listing Email," },
-  { name: "ForemanName", value: "ForemanName", page: "Submission Email,Listing Email," },
-  { name: "SiteLogo", value: "SiteLogo", page: "Submission Email,Listing Email,Proposal Email,Purchase Order Email,Sale Order Email,Invoice Email,Inquiry Email,Incoming Remark,AR Statement," },// Sale, Purchase, Invoice
-  { name: "CompanyLogo", value: "CompanyLogo", page: "Submission Email,Listing Email,Proposal Email,Purchase Order Email,Sale Order Email,Invoice Email,Inquiry Email,Incoming Remark,AR Statement," },
-]

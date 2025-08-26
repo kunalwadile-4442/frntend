@@ -8,31 +8,11 @@ const initialState: IInternalUserTypesRes = {
     items: [],
     totalCount: 0,
     optionList: [],
-    back_office_users: [],
 };
 
 const internalUserReducers = (state: IInternalUserTypesRes = initialState, action): IInternalUserTypesRes => {
   switch (action.type) {
-    case ActionTypes.INTERNAL_USER_LIST:{
-      const optionList = action.payload?.items?.map((item: any, index: any)=>{
-        return{
-          value: item.id,
-          label: item.name,
-        }
-      })
-      const back_office_users = action.payload?.items?.filter?.((item: any, index: any)=>item?.role==='back_office')
-      const userList = action.payload?.items?.map((item)=>({
-        ...item,
-        api_permissions:"",
-        role_permissions:[],
-      }))
-      return {
-        ...state,
-        items: userList,
-        optionList: optionList,
-        back_office_users:back_office_users
-      };
-    }
+    
     case ActionTypes.ADD_INTERNAL_USER:{
       const items = [];
       items.push(action?.payload);

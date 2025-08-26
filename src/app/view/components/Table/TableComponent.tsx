@@ -313,7 +313,7 @@ const TableComponent: React.FC<ITableLayoutProps> = forwardRef(function (props, 
     }, [])
     const dispatch = useDispatch();
     const { send, isConnect } = useWebSocket();
-    const { user_data, socketResponse, searchList, column_permissions } = usePosterReducers();
+    const { user_data, socketResponse, column_permissions } = usePosterReducers();
     const { pageLoader } = useUiReducer();
     const param = useParams()
     const OptionSortMenu = useMemo(() => getOptionColumnMenu(props?.columnOption, props?.columnKey), [props?.columnKey?.length, props?.columnKey, props?.columnOption?.length, props?.columnOption]);

@@ -1,5 +1,4 @@
 import { IPhoneData, ICommonListTypes } from "../../../../utils/types";
-import { IProjectListType } from "../../backOffice/projectManagement/types";
 
 export interface IContactPerson{
   email: string;
@@ -61,8 +60,4 @@ export interface ICustomerListTypes {
     parsedItems: ICustomers[];
     totalCount?: number;
 }
-export interface ICustomersRes {
-  customersList?:ICustomerListTypes,
-  customerDetails?:ICustomers,
-  customerProjects?:{[id: string]:IProjectListType},
-}
+

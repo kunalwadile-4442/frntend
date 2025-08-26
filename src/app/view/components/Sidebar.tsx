@@ -109,13 +109,13 @@ const Sidebar = ({ isOpen, toggleSidebar }: any) => {
                   </div>
                   {menuItem.children && (
                     <span>{isDropdownOpen ?
-                      <svg width="8" height="5" viewBox="0 0 8 5" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M1.00061 4L4.00061 1L7.00061 4" stroke="white" stroke-width="1.49966" stroke-linecap="round" stroke-linejoin="round" />
+                    <svg width="8" height="5" viewBox="0 0 8 5" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1.00061 4L4.00061 1L7.00061 4" stroke="white" strokeWidth="1.49966" strokeLinecap="round" strokeLinejoin="round" />
                       </svg>
 
                       :
                       <svg width="8" height="5" viewBox="0 0 8 5" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M7 1L4 4L1 1" stroke="black" stroke-width="1.49966" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M7 1L4 4L1 1" stroke="black" strokeWidth="1.49966" strokeLinecap="round" strokeLinejoin="round" />
                       </svg>
                     }</span>
                   )}

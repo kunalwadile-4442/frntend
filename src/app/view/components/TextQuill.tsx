@@ -2,9 +2,8 @@
 /* eslint-disable eqeqeq */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useEffect, useMemo, useRef, useState } from "react";
-import { distributionMailKeywords } from "../../utils/constants/static";
-import { UUID4 } from "../../utils/common";
 import ReactQuill from 'react-quill';
+import { UUID4 } from "../../utils/common";
 
 
 
@@ -24,8 +23,7 @@ function TextQuill(props) {
     checkForSpecialCharacter();
   };
 
-
-const keyword_list=props?.name?.toLowerCase()===("Email Subject").toLowerCase()?distributionMailKeywords?.filter(keyword=>keyword?.name!=="SiteLogo"):distributionMailKeywords
+const keyword_list = props?.keywords || [];
 
   const checkForSpecialCharacter = () => {
     const selection = window.getSelection();

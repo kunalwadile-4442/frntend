@@ -1,4 +1,4 @@
-import { ICustomerListTypes, ICustomers, ICustomersRes } from "./types";
+import { ICustomerListTypes, ICustomers } from "./types";
 
 export const ActionTypes = {
   SET_STORE_CUSTOMERS_LIST: "SET_STORE_CUSTOMERS_LIST",
@@ -20,7 +20,7 @@ export const setStoreCustomersList = (payload: ICustomerListTypes) => ({
   type: ActionTypes.SET_STORE_CUSTOMERS_LIST,
   payload,
 });
-export const setStoreCustomersDetails = (payload: ICustomersRes) => ({
+export const setStoreCustomersDetails = (payload: any) => ({
   type: ActionTypes.SET_STORE_CUSTOMERS_DETAILS,
   payload,
 });
